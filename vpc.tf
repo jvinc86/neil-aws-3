@@ -12,10 +12,10 @@ resource "aws_route_table" "mi_router_de_la_vpc" {
   vpc_id = aws_vpc.mi_red.id
   tags   = { Name = "rt-${var.NOMBRE_PROYECTO}-nuevo" }
 
-  route {
-    cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.mi_igw.id
-  }
+  # route {
+  #   cidr_block = "0.0.0.0/0"
+  #   gateway_id = aws_internet_gateway.mi_igw.id
+  # }
 }
 resource "aws_default_route_table" "router_por_defecto" {
   default_route_table_id = aws_vpc.mi_red.default_route_table_id
