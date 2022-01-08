@@ -1,6 +1,7 @@
 resource "aws_vpc" "mi_red" {
-  cidr_block = var.BLOQUE_CIDR_VPC
-  tags       = { Name = "vpc-${var.NOMBRE_PROYECTO}" }
+  cidr_block           = var.BLOQUE_CIDR_VPC
+  enable_dns_hostnames = true
+  tags                 = { Name = "vpc-${var.NOMBRE_PROYECTO}" }
 }
 
 resource "aws_internet_gateway" "mi_igw" {
