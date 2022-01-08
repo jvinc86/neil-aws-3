@@ -38,12 +38,3 @@ resource "aws_route_table_association" "asociar_subnets_publicas_a_default_route
   subnet_id      = module.subredes_publicas.IDs_subredes[count.index]
   route_table_id = aws_default_route_table.router_por_defecto.id
 }
-
-
-
-
-
-# resource "aws_main_route_table_association" "asociar_como_principal_nuestro_nuevo_router" {
-#   vpc_id         = aws_vpc.mi_red.id
-#   route_table_id = aws_route_table.mi_router_de_la_vpc.id
-# }
