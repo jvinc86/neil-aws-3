@@ -6,6 +6,3 @@ output "IP_privada_de_EC2_en_subred_privada" { value = module.instancias_ec2_pri
 
 output "IP_privada_de_EC2_en_subred_publica" { value = module.instancias_ec2_publicas.mis_ip_publicas }
 output "IP_publica_de_EC2_en_subred_publica" { value = module.instancias_ec2_publicas.mis_ip_privadas }
-
-
-

@@ -10,6 +10,20 @@ resource "aws_instance" "mis_vms" {
   tags = { Name = "srv-${var.tipo_subred}-${var.proyecto}-${count.index + 1}" }
 }
 
+data "template_file" "userdata_win" {
+  template = <<EOF
+                <script>
+                echo "" > _INIT_STARTED_
+                net user ${var.instance_username} /add /y
+                net user ${var.instance_username} ${var.instance_password}
+                net localgroup administrators ${var.instance_username} /add
+                netsh advfirewall set allprofiles state off
+                echo "" > _INIT_COMPLETE_
+                </script>
+                <persist>false</persist>
+              EOF
+}
+
 locals {
   reglas_ingress = [
     { puerto = 22
@@ -57,16 +71,27 @@ resource "aws_security_group" "mi_sec_group" {
 
 }
 
-data "template_file" "userdata_win" {
-  template = <<EOF
-                <script>
-                echo "" > _INIT_STARTED_
-                net user ${var.instance_username} /add /y
-                net user ${var.instance_username} ${var.instance_password}
-                net localgroup administrators ${var.instance_username} /add
-                netsh advfirewall set allprofiles state off
-                echo "" > _INIT_COMPLETE_
-                </script>
-                <persist>false</persist>
-              EOF
+resource "aws_network_acl" "mi_network_acl" {
+  vpc_id     = var.el_id_de_la_VPC
+  subnet_ids = var.los_IDs_subredes
+
+  ingress {
+    protocol   = "-1"
+    rule_no    = 100
+    action     = "allow"
+    cidr_block = "0.0.0.0/0"
+    from_port  = 0
+    to_port    = 0
+  }
+
+  egress {
+    protocol   = "-1"
+    rule_no    = 200
+    action     = "allow"
+    cidr_block = "0.0.0.0/0"
+    from_port  = 0
+    to_port    = 0
+  }
+
+  tags = { Name = "acl-${var.tipo_subred}-${var.proyecto}" }
 }

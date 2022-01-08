@@ -17,6 +17,6 @@ variable "WIN_SERVER_AMI" {
     eu-west-3 = "ami-05fb43e0cf8358e9a"  # WindowsServer (Paris)
   }
 }
-variable "CANTIDAD_INSTANCIAS" { default = 3 }
+# variable "CANTIDAD_INSTANCIAS" { default = 3 }
 variable "INSTANCE_USERNAME" { default = "vincent" }
 variable "INSTANCE_PASSWORD" { default = "Password!1234" }

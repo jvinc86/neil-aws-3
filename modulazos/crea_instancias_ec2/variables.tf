@@ -9,5 +9,3 @@ variable "instance_password" { }
 variable "tipo_subred" { }
 variable "los_IDs_subredes" { }
 variable "AZs" {}
-
-
