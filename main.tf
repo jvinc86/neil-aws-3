@@ -21,12 +21,12 @@ module "subredes_publicas" {
 }
 
 module "instancias_ec2_publicas" {
-  source               = "./modulazos/crea_instancias_ec2"
-  el_id_de_la_VPC      = aws_vpc.mi_red.id
-  proyecto             = var.NOMBRE_PROYECTO
-  cantidad_instancias  = var.CANTIDAD_INSTANCIAS
-  tipo_subred          = "publica"
-  los_IDs_subredes     = module.subredes_publicas.IDs_subredes
+  source              = "./modulazos/crea_instancias_ec2"
+  el_id_de_la_VPC     = aws_vpc.mi_red.id
+  proyecto            = var.NOMBRE_PROYECTO
+  cantidad_instancias = var.CANTIDAD_INSTANCIAS
+  tipo_subred         = "publica"
+  los_IDs_subredes    = module.subredes_publicas.IDs_subredes
 
   AZs               = var.AV_ZONES
   win_server_ami    = var.WIN_SERVER_AMI
@@ -37,12 +37,12 @@ module "instancias_ec2_publicas" {
 }
 
 module "instancias_ec2_privadas" {
-  source               = "./modulazos/crea_instancias_ec2"
-  el_id_de_la_VPC      = aws_vpc.mi_red.id
-  proyecto             = var.NOMBRE_PROYECTO
-  cantidad_instancias  = var.CANTIDAD_INSTANCIAS
-  tipo_subred          = "privadas"
-  los_IDs_subredes     = module.subredes_privadas.IDs_subredes
+  source              = "./modulazos/crea_instancias_ec2"
+  el_id_de_la_VPC     = aws_vpc.mi_red.id
+  proyecto            = var.NOMBRE_PROYECTO
+  cantidad_instancias = var.CANTIDAD_INSTANCIAS
+  tipo_subred         = "privadas"
+  los_IDs_subredes    = module.subredes_privadas.IDs_subredes
 
   AZs               = var.AV_ZONES
   win_server_ami    = var.WIN_SERVER_AMI
