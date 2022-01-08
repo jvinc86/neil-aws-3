@@ -6,5 +6,3 @@ variable "NRO_DE_SUBREDES"      { default = 3 }   #OJO si se modifica este numer
 variable "AV_ZONES"             { default = ["eu-west-3a", "eu-west-3b", "eu-west-3c"] }
 variable "CIDR_PRIVADOS_SUBRED" { default = ["192.168.80.0/24", "192.168.81.0/24", "192.168.82.0/24"] }
 variable "CIDR_PUBLICOS_SUBRED" { default = ["192.168.120.0/24", "192.168.121.0/24", "192.168.122.0/24"] }
-
-

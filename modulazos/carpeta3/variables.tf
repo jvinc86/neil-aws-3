@@ -5,8 +5,3 @@ variable "cantidad_subredes" { }
 variable "los_az" { }
 variable "tipo_subred" { }
 variable "asigna_ip_publica" { }
-
-
-
-
-
