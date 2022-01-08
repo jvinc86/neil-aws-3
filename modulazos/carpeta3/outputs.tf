@@ -1,0 +1,1 @@
+output Rango_de_IPs_Subred { value = aws_subnet.subred_privada_1.cidr_block }
